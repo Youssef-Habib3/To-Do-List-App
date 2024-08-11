@@ -89,7 +89,7 @@ const Main = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           ref={focusSearch}
-          className="bg-black/10 h-14 rounded-full p-5 pr-[85px]"
+          className="bg-black/10 h-14 w-full rounded-full p-5 pr-[85px]"
         />
 
         <button
