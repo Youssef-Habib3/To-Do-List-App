@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+}
+*:focus {
+  outline: none;
+}
+body {
+  background-image: linear-gradient(135deg, #153677, #de085f);
+}
+
+.active {
+  width: 16px;
+  height: 16px;
+  @apply bg-red-500;
+}
+
+.done {
+  text-decoration: line-through;
+}
