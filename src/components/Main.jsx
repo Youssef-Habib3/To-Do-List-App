@@ -62,7 +62,7 @@ const Main = () => {
       button.className =
         "button flex items-center justify-center rounded-full w-9 h-9 hover:bg-black/10 duration-300";
       button.style = "font-family: cursive";
-      button.innerHTML = "x";
+      button.innerHTML = `<img class="w-4 h-4" src="https://img.icons8.com/?size=256w&id=111057&format=png">`;
       div.appendChild(button);
       button.addEventListener("click", () => {
         localStorage.removeItem("list");
