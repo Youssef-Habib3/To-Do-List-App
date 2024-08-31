@@ -1,8 +1,8 @@
 "use client";
 
-import Header from "@/components/Header";
-import Main from "@/components/Main";
 import { motion } from "framer-motion";
+import Header from "../components/Header";
+import Main from "../components/Main";
 
 const Home = () => {
   return (

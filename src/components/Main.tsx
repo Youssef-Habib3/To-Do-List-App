@@ -7,10 +7,10 @@ const Main = () => {
   const [inputValue, setInputValue] = useState("");
 
   // to catch footer to put in it the value
-  const catchingFooter = useRef(null);
+  const catchingFooter = useRef<HTMLDivElement>(null!);
 
   // to focus on the search bar
-  const focusSearch = useRef(null);
+  const focusSearch = useRef<HTMLInputElement>(null!);
   useEffect(() => {
     focusSearch.current.focus();
   }, []);
@@ -19,12 +19,16 @@ const Main = () => {
   const updateStorage = () =>
     localStorage.setItem("list", catchingFooter.current.innerHTML);
   useEffect(() => {
-    catchingFooter.current.innerHTML = localStorage.getItem("list");
+    catchingFooter.current.innerHTML = localStorage.getItem("list") || "";
 
-    document.querySelectorAll(".button").forEach((button) => {
+    (
+      document.querySelectorAll(".button") as NodeListOf<HTMLButtonElement>
+    ).forEach((button) => {
       button.addEventListener("click", () => {
+        const parentElement = button.parentElement as HTMLElement;
+
         localStorage.removeItem("list");
-        button.parentElement.remove();
+        parentElement.remove();
         focusSearch.current.focus();
 
         updateStorage();
@@ -34,7 +38,7 @@ const Main = () => {
 
   // Add button
   const handleClickButton = () => {
-    // if enpty do not create anything
+    // if empty do not create anything
     if (inputValue.trim() !== "") {
       // div container
       const div = document.createElement("div");
@@ -61,12 +65,14 @@ const Main = () => {
       const button = document.createElement("button");
       button.className =
         "button flex items-center justify-center rounded-full w-9 h-9 hover:bg-black/10 duration-300";
-      button.style = "font-family: cursive";
+      button.style.fontFamily = "cursive";
       button.innerHTML = `<img class="w-4 h-4" src="https://img.icons8.com/?size=256w&id=111057&format=png">`;
       div.appendChild(button);
       button.addEventListener("click", () => {
+        const parentElement = button.parentElement as HTMLElement;
+
         localStorage.removeItem("list");
-        button.parentElement.remove();
+        parentElement.remove();
         focusSearch.current.focus();
 
         updateStorage();
